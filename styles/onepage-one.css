@@ -1,0 +1,393 @@
+/*---------------------------------------
+
+[Home Page(Type 1) Stylesheet]
+
+Template Name: Moksha
+Version:1.2
+
+----------------------------------------*/
+
+
+
+/*----------------------------------------
+
+[Table Of Contents]
+
+1.Check MQ
+2.Layout
+3.Slide Panel
+4.Slide Panel Close
+4.Media Queries for width greater than 1170px
+5.Media Queries for Tablet and Smart Phones
+
+
+-----------------------------------------*/
+
+/* Check MQ */
+
+body.one-page::before{
+                       /* never visible - this is used in jQuery to check the current MQ */
+                       content: 'mobile';
+                       display: none;
+                       }
+
+@media only screen and (min-width: 1170px) {
+
+body.one-page::before{
+                    /* never visible - this is used in jQuery to check the current MQ */
+                    content: 'desktop';
+                    }
+
+}
+
+/* Check MQ Ends */
+
+
+
+/* Layout */
+
+.section-block,.half-block{
+                           -webkit-transform: translateZ(0);
+                           -moz-transform: translateZ(0);
+                           -ms-transform: translateZ(0);
+                           -o-transform: translateZ(0);
+                           transform: translateZ(0);
+                           -webkit-backface-visibility: hidden;
+                           backface-visibility: hidden;
+                           }
+
+.section-block{
+               -webkit-transform-origin: center center;
+               -moz-transform-origin: center center;
+               -ms-transform-origin: center center;
+               -o-transform-origin: center center;
+               transform-origin: center center;
+               }
+
+.section-outer:first-of-type .section-block{
+                                            visibility: visible;
+                                            height: 100%;
+                                            }
+
+.half-block{
+            background: #ffffff;
+            color: #000000;
+            }
+
+.section-block .inner{
+                     height: 100%;
+                     width: 100%;
+                     }
+
+.section-block .inner .vertical-align{
+                                      z-index: 400;
+                                      }
+
+
+/* Layout Ends */
+
+
+
+/* Slide Panel */
+
+.slide-panel-container{
+                       position: absolute;
+                       width: 100%;
+                       height: 100%;
+                       top: 0;
+                       z-index: 100;
+                       background-color: #ffffff;
+                       -webkit-transition-property: -webkit-transform;
+                       -moz-transition-property: -moz-transform;
+                       -ms-transition-property: -moz-transform;
+                       transition-property: transform;
+                       -webkit-transition-duration: 0.3s;
+                       -moz-transition-duration: 0.3s;
+                       -ms-transition-duration: 0.3s;
+                       -o-transition-duration: 0.3s;
+                       transition-duration: 0.3s;
+                       -webkit-transition-delay: 0.3s;
+                       -moz-transition-delay: 0.3s;
+                       -ms-transition-delay: 0.3s;
+                       -o-transition-delay: 0.3s;
+                       transition-delay: 0.3s;
+                       overflow: visible !important;
+                       }
+
+.from-right .slide-panel-container{
+                                   right: 0;
+                                   -webkit-transform: translate3d(100%, 0, 0);
+                                   -moz-transform: translate3d(100%, 0, 0);
+                                   -ms-transform: translate3d(100%, 0, 0);
+                                   -o-transform: translate3d(100%, 0, 0);
+                                   transform: translate3d(100%, 0, 0);
+                                   }
+
+.from-left .slide-panel-container{
+                                  left: 0;
+                                  -webkit-transform: translate3d(-100%, 0, 0);
+                                  -moz-transform: translate3d(-100%, 0, 0);
+                                  -ms-transform: translate3d(-100%, 0, 0);
+                                  -o-transform: translate3d(-100%, 0, 0);
+                                  transform: translate3d(-100%, 0, 0);
+                                  }
+
+.is-panel-visible .slide-panel-container{
+                                         -webkit-transform: translate3d(0, 0, 0);
+                                         -moz-transform: translate3d(0, 0, 0);
+                                         -ms-transform: translate3d(0, 0, 0);
+                                         -o-transform: translate3d(0, 0, 0);
+                                         transform: translate3d(0, 0, 0);
+                                         -webkit-transition-delay: 0s;
+                                         -moz-transition-delay: 0s;
+                                         -ms-transition-delay: 0s;
+                                         -o-transition-delay: 0s;
+                                         transition-delay: 0s;
+                                         }
+
+.slide-panel-content{
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 100%;
+                     padding-top: 100px;
+                     overflow: visible !important;
+                     overflow: scroll;
+                     background-color: #ffffff;
+                     /* smooth scrolling on touch devices */
+                     -webkit-overflow-scrolling: touch;
+                     }
+
+.slide-panel{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 500;
+            background-color: #ffffff;
+            visibility: hidden;
+            overflow: scroll;
+            -webkit-transition: visibility 0s 0.6s;
+            -moz-transition: visibility 0s 0.6s;
+            -o-transition: visibility 0s 0.6s;
+            -ms-transition: visibility 0s 0.6s;
+            transition: visibility 0s 0.6s;
+            }
+
+.slide-panel::after{
+                    /* overlay layer */
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: #ffffff;
+                    cursor: pointer;
+                    z-index: 10000;
+                    -webkit-transition: background 0.3s 0.3s;
+                    -moz-transition: background 0.3s 0.3s;
+                    -ms-transition: background 0.3s 0.3s;
+                    -o-transition: background 0.3s 0.3s;
+                    transition: background 0.3s 0.3s;
+                    }
+
+.slide-panel.is-panel-visible{
+                              visibility: visible;
+                              -webkit-transition: visibility 0s 0s;
+                              -moz-transition: visibility 0s 0s;
+                              -o-transition: visibility 0s 0s;
+                              -ms-transition: visibility 0s 0s;
+                              transition: visibility 0s 0s;
+                              }
+
+.slide-panel.is-panel-visible::after{
+                                     background: rgba(0, 0, 0, 0.6);
+                                     -webkit-transition: background 0.3s 0s;
+                                     -moz-transition: background 0.3s 0s;
+                                     -ms-transition: background 0.3s 0s;
+                                     -o-transition: background 0.3s 0s;
+                                     transition: background 0.3s 0s;
+                                     }
+
+
+
+.slide-panel-content > .w800:hover{
+                                  -webkit-transition:all 0.2s ease-in;
+                                  -moz-transition:all 0.2s ease-in;
+                                  -o-transition:all 0.2s ease-in;
+                                  -ms-transition:all 0.2s ease-in;
+                                  transition:all 0.2s ease-in;
+                                  overflow: visible !important;
+                                  }
+
+.slide-panel .gallery{
+                      max-width: 1420px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      }
+
+
+/* Slide Panel Ends */
+
+
+/* Slide Panel Close*/
+
+.slide-panel-close{
+                  top:20px;
+                  right:20px;
+                  color:black;
+                  display: block;
+                  width: 100px;
+                  height:100px;
+                  z-index: 100;
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                  }
+
+.slide-panel-close.top{
+                      margin-bottom:40px;
+                      }
+
+.slide-panel-close.bottom{
+                         margin-top: 40px;
+                         }
+
+.slide-panel-close:after{
+                        content:url(../images/png/close-64.png);
+                        text-align: center;
+                        -webkit-transition:all 0.2s ease-in;
+                        -moz-transition:all 0.2s ease-in;
+                        -o-transition:all 0.2s ease-in;
+                        -ms-transition:all 0.2s ease-in;
+                        transition:all 0.2s ease-in;
+                        }
+
+.slide-panel-close:hover:after{
+                              opacity: 0.6;
+                              }
+
+/* Slide Panel Close Ends*/
+
+
+/* Media Queries for width greater than 1170px */
+
+
+@media only screen and (min-width: 1170px) {
+
+/* Layout */
+
+.one-page .section-outer{
+                         height: 100vh;
+                         }
+
+.section-outer:nth-of-type(even) .half-block:first-of-type, .section-outer:nth-of-type(odd) .half-block:nth-of-type(2) {
+      left: 0;
+      -webkit-transform: translateX(-100%);
+      -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      -o-transform: translateX(-100%);
+      transform: translateX(-100%);
+      }
+
+.section-outer:nth-of-type(odd) .half-block:first-of-type, .section-outer:nth-of-type(even) .half-block:nth-of-type(2) {
+    right: 0;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+    }
+
+.section-block{
+              position: fixed;
+              width: 100%;
+              min-height: 100vh;
+              top: 0;
+              left: 0;
+              height: 100vh;
+              box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+              visibility: hidden;
+              }
+
+.section-outer:first-of-type .section-block{
+                                            visibility: visible;
+                                            }
+.section-block > * {
+                   visibility: visible;
+                   }
+
+.half-block{
+            height: 100vh !important;
+            width: 50%;
+            position: absolute;
+            top: 0;
+            }
+
+/* Layout Ends */
+
+
+}
+
+
+/* Media Queries for width greater than 1170px Ends */
+
+
+
+/* Media Queries for Tablet and Smart Phones */
+
+@media only screen and (max-width: 1024px) {
+
+/* Layout */
+
+.inner{
+      overflow-x:hidden !important;
+      overflow-y:hidden !important;
+      }
+
+
+.section-outer:first-child{
+                          margin-bottom: 100px;
+                          }
+
+
+.half-block .inner{
+                  padding-top: 100px;
+                  padding-bottom: 100px;
+                  }
+
+
+.slide-panel-container{
+                      display: none !important;
+                      }
+
+.section-block .inner{
+                     height: auto !important;
+                     }
+
+.half-block .vertical-align{
+                           transform:translateY(0%);
+                           -webkit-transform:translateY(0%);
+                           -moz-transform:translateY(0%);
+                           -ms-transform:translateY(0%);
+                           -o-transform:translateY(0%);
+                           top: 0%;
+                           }
+
+/* Layout Ends */
+
+
+
+/* Google Map */
+
+#google-map{
+           margin-bottom:0px !important;
+           }
+
+/* Google Map */
+
+}
+
+/* Media Queries for Tablet and Smart Phones Ends */
